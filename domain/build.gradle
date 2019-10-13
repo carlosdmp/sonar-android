@@ -1,0 +1,47 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+
+def dep = rootProject.ext
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        minSdkVersion 22
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "$dep.kotlinCore.stdLib"
+    implementation "$dep.kotlinCore.ktx"
+
+    implementation "$dep.coroutines.core"
+    implementation "$dep.coroutines.android"
+
+    testImplementation "$dep.test.core"
+    testImplementation "$dep.test.junit"
+    testImplementation "$dep.test.mockk"
+    testImplementation "$dep.test.coroutines"
+
+    androidTestImplementation "$dep.androidTest.runner"
+    androidTestImplementation "$dep.androidTest.rules"
+}
