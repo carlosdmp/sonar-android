@@ -1,4 +1,4 @@
-package cdmp.app.sonar.ui.main
+package cdmp.app.sonar.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -32,7 +32,7 @@ class LoginFragment : Fragment() {
         fun newInstance() = LoginFragment()
     }
 
-    val sessionViewModel by sharedViewModel<SessionViewModel>()
+    private val sessionViewModel by sharedViewModel<SessionViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

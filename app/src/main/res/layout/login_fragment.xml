@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.LoginFragment">
+    tools:context=".view.fragment.LoginFragment">
 
     <TextView
         android:id="@+id/tv_welcome"
@@ -13,6 +14,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="Welcome"
+        android:textColor="@color/text"
         android:fontFamily="@font/robot_light_italic"
         android:textSize="42sp"
         app:layout_constraintBottom_toTopOf="@+id/b_signin"

@@ -1,16 +1,13 @@
 package cdmp.app.sonar
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import cdmp.app.presentation.viewmodel.SessionViewModel
-import cdmp.app.sonar.ui.main.LoginFragment
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
+import cdmp.app.sonar.view.fragment.ChatFragment
+import cdmp.app.sonar.view.fragment.LoginFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -24,10 +21,13 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, LoginFragment.newInstance())
                 .commitNow()
+
         }
         sessionViewModel.loggedUserDisplay.observe(this, Observer {
-            if(it!=null){
-                print("ee")
+            if (it != null) {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, ChatFragment.newInstance())
+                    .commitNow()
             }
         })
     }
