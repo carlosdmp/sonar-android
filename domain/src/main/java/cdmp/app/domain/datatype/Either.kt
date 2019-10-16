@@ -14,7 +14,7 @@ sealed class Either<out L, out R> {
     data class Left<out L>(val a: L) : Either<L, Nothing>()
     data class Right<out R>(val b: R) : Either<Nothing, R>()
 
-    fun <C> fold(fnL: (L) -> C, fnR: (R) -> C): C =
+    inline fun <C> fold(fnL: (L) -> C, fnR: (R) -> C): C =
         when (this) {
             is Left -> fnL(a)
             is Right -> fnR(b)
@@ -46,7 +46,7 @@ inline fun <T, L, R> Either<L, R>.flatMap(fn: (R) -> Either<L, T>): Either<L, T>
 
 fun <T, L, R> Either<L, R>.map(fn: (R) -> (T)): Either<L, T> = this.flatMap { right(fn(it)) }
 
-fun <P, T, L, R> Either<P, T>.bimap(
+inline fun <P, T, L, R> Either<P, T>.bimap(
     leftFn: (P) -> L,
     rightFn: (T) -> R
 ): Either<L, R> = when (this) {

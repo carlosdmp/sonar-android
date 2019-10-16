@@ -4,3 +4,5 @@ data class ChatMessage(
     val senderId: String,
     val text: String
 )
+
+data class SubscribeMessage(val userId: String)
