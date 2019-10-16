@@ -43,6 +43,8 @@ dependencies {
     implementation "$dep.network.converter"
     implementation "$dep.network.gson"
 
+    implementation 'com.tinder.scarlet:scarlet:0.1.9'
+
     testImplementation "$dep.test.core"
     testImplementation "$dep.test.junit"
     testImplementation "$dep.test.mockk"

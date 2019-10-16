@@ -1,4 +1,4 @@
-package cdmp.app.model
+package cdmp.app.domain.model
 
 data class User(
     val id: String,

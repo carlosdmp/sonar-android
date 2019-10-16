@@ -1,8 +1,8 @@
 package cdmp.app.sonar
 
 import android.os.Bundle
-import android.view.Window
-import android.view.WindowManager
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import cdmp.app.presentation.viewmodel.SessionViewModel
@@ -24,11 +24,18 @@ class MainActivity : AppCompatActivity() {
 
         }
         sessionViewModel.loggedUserDisplay.observe(this, Observer {
-            if (it != null) {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, ChatFragment.newInstance())
-                    .commitNow()
-            }
+            it.fold(
+                {
+                    findViewById<TextView>(R.id.tv_error).apply {
+                        text = it
+                        visibility = View.VISIBLE
+                    }
+                }, {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, ChatFragment.newInstance())
+                        .commitNow()
+                }
+            )
         })
     }
 }

@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import cdmp.app.model.User
+import cdmp.app.domain.model.User
+import cdmp.app.domain.model.UserLogin
 import cdmp.app.presentation.viewmodel.SessionViewModel
 import cdmp.app.sonar.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -66,14 +67,8 @@ class LoginFragment : Fragment() {
         try {
             val account = completedTask.getResult(ApiException::class.java)!!
             sessionViewModel.setUserFromAuth(
-                User(
-                    id = "G-" + account.id,
-                    email = "",
-                    firstName = "",
-                    lastName = "",
-                    phone = "",
-                    username = "",
-                    userStatus = 0
+                UserLogin(
+                    token = "G-" + account.id
                 )
             )
             // Signed in successfully, show authenticated UI.

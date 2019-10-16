@@ -5,11 +5,10 @@ object DiModuleBuilder {
     const val REAL_IMPL = "REAL_IMPL"
 
     fun buildModules() = listOf(
-//        DataModules.remoteServiceModule,
-//        DataModules.apiModule,
-//        DataModules.dbModule,
-//        DataModules.repoModule,
-//        DomainModules.useCaseModules,
+        DataModules.remoteServiceModule,
+        DataModules.apiModule,
+        DataModules.repoModule,
+        DomainModules.useCaseModules,
         PresentationModules.mainModule
     )
 

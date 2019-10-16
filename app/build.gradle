@@ -53,6 +53,11 @@ dependencies {
     implementation "$dep.network.converter"
     implementation "$dep.network.gson"
 
+    implementation 'com.tinder.scarlet:scarlet:0.1.9'
+    implementation "com.tinder.scarlet:websocket-okhttp:0.1.9"
+    implementation "com.tinder.scarlet:stream-adapter-coroutines:0.1.9"
+    implementation "com.tinder.scarlet:message-adapter-moshi:0.1.9"
+
     testImplementation "$dep.test.junit"
 
     implementation "$dep.db.room"
