@@ -8,6 +8,7 @@ object DiModuleBuilder {
         DataModules.remoteServiceModule,
         DataModules.apiModule,
         DataModules.repoModule,
+        DataModules.localModule,
         DomainModules.useCaseModules,
         PresentationModules.mainModule
     )

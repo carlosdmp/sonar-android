@@ -2,15 +2,29 @@ package cdmp.app.data
 
 import androidx.annotation.WorkerThread
 import cdmp.app.data.service.SonarSocketService
-import cdmp.app.domain.model.SubscribeMessage
-import cdmp.app.domain.model.User
+import cdmp.app.domain.model.MessageRequest
+import cdmp.app.domain.model.MessageRequestEntity
+import cdmp.app.domain.model.MessageResponse
+import kotlinx.coroutines.channels.ReceiveChannel
 
 
 class SonarSocketConnection(private val service: SonarSocketService) {
 
     @WorkerThread
-    suspend fun startSubscribe(message: SubscribeMessage): Boolean {
-        return service.sendSubscribe(message)
+    suspend fun sendMessage(message: MessageRequest): Boolean {
+        return service.sendMessage(
+            MessageRequestEntity(
+                userId = message.userId,
+                createdAt = message.createdAt.toString(),
+                geoPos = message.geoPos,
+                message = message.message
+            )
+        )
+    }
+
+    @WorkerThread
+    suspend fun startSubscribeToChatMessage(): ReceiveChannel<MessageResponse> {
+        return service.observeChatMessages()
     }
 
 }

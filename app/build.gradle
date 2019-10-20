@@ -63,6 +63,8 @@ dependencies {
     implementation "$dep.db.room"
     kapt "$dep.db.roomKapt"
 
+    compile 'com.github.stfalcon:chatkit:0.3.3'
+
     androidTestImplementation "$dep.koin.test"
     androidTestImplementation "$dep.androidTest.runner"
     androidTestImplementation "$dep.androidTest.rules"
